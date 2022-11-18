@@ -21,10 +21,12 @@ import { useInView } from "react-intersection-observer";
 import Presentacion from "./Presentacion";
 import Derechos from "./Derechos";
 import { Animated } from "react-animated-css";
+import Navbar2 from "./Navbar2";
 
 const Inicio = () => {
   return (
     <div className="relative bg-gradient-to-r from-blue-400 to-blue-500">
+      
       <div>
         <h1 className="text-gray-100 text-center font-extrabold md:text-7xl text-6xl  animate__animated animate__zoomInDown">
           Instalación de Cámaras de Seguridad Inteligentes (CCTV).

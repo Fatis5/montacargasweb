@@ -11,6 +11,8 @@ import Pventa from "./screens/Servicios/Pventa";
 import Enlaces from "./screens/Servicios/Enlaces";
 import Hardwere from "./screens/Servicios/Hardwere";
 import Paginasweb from "./screens/Servicios/Paginasweb";
+import Opiniones from "./screens/Opiniones";
+import Cerca from "./screens/Servicios/Cerca";
 import Wifi from "./screens/Servicios/Wifi";
 
 import { Route, Routes } from "react-router-dom";
@@ -39,6 +41,10 @@ const App = () => {
         <Route path="/hardwere" element={<Hardwere />} />
         <Route path="/paginasweb" element={<Paginasweb />} />
         <Route path="/wifi" element={<Wifi />} />
+        <Route path="/Testimonios" element={<Opiniones />} />
+        <Route path="/cerca" element={<Cerca />} />
+
+
       </Routes>
 
 

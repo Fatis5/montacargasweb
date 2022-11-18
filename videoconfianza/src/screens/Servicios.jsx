@@ -18,19 +18,19 @@ import Cctv from "../screens/Servicios/Cctv";
 import { Link } from "react-router-dom";
 import Footer from "./Footer";
 import domotica from "../media/domotica.jpg";
-import CardShopping from 'react-card-shopping';
+import CardShopping from "react-card-shopping";
+import cerca from "../media/cerca.jpg";
 import { useLocation } from "react-router-dom";
 import { useEffect } from "react";
 
-import 'react-card-shopping/src/card.css';
+import "react-card-shopping/src/card.css";
 const Servicios = () => {
-
   const location = useLocation();
-   
+
   useEffect(() => {
     window.scrollTo(0, 0);
   }, [location]);
-  
+
   const [Servicios, setServicios] = useState([
     {
       id: uuidv4(),
@@ -42,12 +42,21 @@ const Servicios = () => {
     },
     {
       id: uuidv4(),
+      servicio: "Cercas electrificadas",
+      imagen: cerca,
+      descripcion:
+        "Los ladrones no  podrán ingresar a tu domicilio con una cerca electrificada y si lo intentan serán detectados",
+      route: "/cerca",
+    },
+    {
+      id: uuidv4(),
       servicio: "Controles de acceso",
       imagen: cacces,
       descripcion:
         "Los controles de acceso es una herramienta que te permitirá controlar el acceso a tu casa, oficina, negocio o empresa",
       route: "/acces",
     },
+
     {
       id: uuidv4(),
       servicio: "Alarmas Vecinales",
@@ -99,19 +108,17 @@ const Servicios = () => {
     },
   ]);
 
-
   return (
     <div className="bg-gradient-to-r from-blue-400 to-blue-500">
-    <div >
+      <div>
+        <h1 className=" text-center py-10 text-white text-8xl animate__animated animate__fadeInUp">
+          {" "}
+          Servicios:
+        </h1>
+      </div>
 
-      <h1 className=" text-center py-10 text-white text-8xl animate__animated animate__fadeInUp"> Servicios:</h1>
-
-    </div>
-
-    <div  className="flex flex-wrap justify-center">
-   
+      <div className="flex flex-wrap justify-center">
         {Servicios.map((servicio) => (
-         
           <div key={servicio.id}>
             <div className="max-w-xs  mx-10 my-4  overflow-hidden bg-white rounded-xl shadow-lg dark:bg-gray-800">
               <img
@@ -119,32 +126,27 @@ const Servicios = () => {
                 src={servicio.imagen}
                 alt="avatar"
               />
-  
-              <div className="py-5 text-center">
 
-              <span  className="block text-2xl font-bold text-gray-800 dark:text-white">{servicio.servicio}</span>
+              <div className="py-5 text-center">
+                <span className="block text-2xl font-bold text-gray-800 dark:text-white">
+                  {servicio.servicio}
+                </span>
 
                 <span className="text-sm text-gray-700 dark:text-gray-200 text-justify">
                   {servicio.descripcion}
                 </span>
 
                 <Link to={servicio.route}>
-                <div className="bg-gray-200 mt-4 rounded-3 border-2 border-green-700 mx-3">
-                  <p>Más información</p>
-                </div>
+                  <div className="bg-gray-200 mt-4 rounded-3 border-2 border-green-700 mx-3">
+                    <p>Más información</p>
+                  </div>
                 </Link>
               </div>
             </div>
           </div>
-       
-          ))}
-
+        ))}
+      </div>
     </div>
-  
-  </div>
-
-
-   
   );
 };
 
