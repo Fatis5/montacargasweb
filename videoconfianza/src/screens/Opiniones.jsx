@@ -43,7 +43,7 @@ const Opiniones = () => {
     {
       id: 6,
       name: "Marcos",
-      opinion: "Muy buen servicio, muy recomendable, con su cerca eléctrica puedo cuidar mi anado mas facil",
+      opinion: "Muy buen servicio, muy recomendable, con su cerca eléctrica puedo cuidar mi ganado mas fácil",
       image:
         " https://www.gob.mx/cms/uploads/article/main_image/91016/DSC_0752.JPG ",
     },

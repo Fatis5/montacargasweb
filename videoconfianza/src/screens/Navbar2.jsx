@@ -57,6 +57,13 @@ function Navbar2() {
                   >
                     Testimonios
                   </Link>
+
+                  <Link
+                    className="text-gray-900 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
+                    to="/tienda"
+                  >
+                    Tienda
+                  </Link>
                 </div>
               </div>
             </div>
@@ -151,6 +158,14 @@ function Navbar2() {
                   to="/testimonios"
                 >
                   Testimonios
+                </Link>
+
+                <Link
+                  onClick={() => setIsOpen(!isOpen)}
+                  className=" bg-blue-300 mx-auto w-11/12 text-center  text-gray-900 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-3xl font-medium"
+                  to="/tienda"
+                >
+                  Tienda
                 </Link>
               </div>
             </div>
