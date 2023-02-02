@@ -3,20 +3,22 @@ import axios from "axios";
 import { useState, useEffect } from "react";
 import { useContext } from "react";
 import { ContextCredentials } from "../ContextCredentials";
-import {Link, useLocation, useParams} from "react-router-dom";
+import { Link, useLocation, useParams } from "react-router-dom";
 import getToken from "../methods/getToken";
-import Loading from "../loading/Loading";
-import Search from "../loading/Search";
-
-
+import Loading from "../littleComponents/Loading";
+import Search from "../littleComponents/Search";
+import getTipoCambio from "../methods/TipoCambio";
+import Iva from "../littleComponents/Iva";
+import CartButton from "../littleComponents/CartButton";
 
 const Productos = () => {
   const [Productos, setProductos] = useState([]);
-  const { Token, setToken } = useContext(ContextCredentials);
+  const { Token, setToken, TipoCambio, setTipoCambio } =
+    useContext(ContextCredentials);
   const location = useLocation();
   const [Nombre, setNombre] = useState(location.state.nombre);
   const [Imagen, setImagen] = useState([]);
-  const [TipoCambio, setTipoCambio] = useState("");
+
   const [ProductosAutorizados, setProductosAutorizados] = useState([]);
 
   const getProductos = async () => {
@@ -67,8 +69,8 @@ const Productos = () => {
   }, []);
 
   useEffect(() => {
-    getProductos();
     getTipoCambio();
+    getProductos();
   }, [Token]);
 
   return (
@@ -96,26 +98,37 @@ const Productos = () => {
                 alt="imagen"
               />
               <Link
-              to={{
-                pathname: `/DetalleProducto/${producto.producto_id}`,
-              }}
-
-              className="text-center text-xl text-black font-bold m-1 hover:text-blue-600 hover:underline  animate__animated animate__fadeInUp">
+                to={{
+                  pathname: `/DetalleProducto/${producto.producto_id}`,
+                }}
+                className="text-center text-base text-black font-bold m-1 hover:text-blue-600 hover:underline  animate__animated animate__fadeInUp"
+              >
                 {producto.titulo}
               </Link>
-              <h1 className="text-center text-xl text-green-700  m-5 animate__animated animate__fadeInUp">
+              <h1 className="text-center text-xl text-green-700  m-1 animate__animated animate__fadeInUp">
                 {producto.marca}
               </h1>
               <h1 className="text-center text-xl text-slate-400  m-1 animate__animated animate__fadeInUp line-through">
                 ${(producto.precios.precio_lista * TipoCambio).toFixed(2)}
               </h1>
-              <h1 className="text-center text-4xl text-orange-500 font-bold my-3 animate__animated animate__fadeInUp">
-                MX $
-                {(
-                  producto.precios.precio_descuento * TipoCambio +
-                  producto.precios.precio_descuento * TipoCambio * 0.36
-                ).toFixed(2)}
-              </h1>
+           
+                <h1 className="text-center text-3xl text-orange-500 font-bold my-3 animate__animated animate__fadeInUp">
+                  MX $
+                  {(
+                    producto.precios.precio_descuento * TipoCambio +
+                    producto.precios.precio_descuento * TipoCambio * 0.36
+                  ).toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,')
+                  }
+                </h1>
+                <Iva className="animate__animated animate__fadeInUp" />
+             
+              <div class="flex flex-row">
+{/*                 <button className="bg-yellow-400 hover:bg-yellow-500 text-white   px-4 rounded-sm m-2 animate__animated animate__fadeInUp">
+                  Agregar
+                </button> */}
+
+                <CartButton/>
+              </div>
             </div>
           );
         })}

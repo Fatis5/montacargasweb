@@ -39,7 +39,13 @@ code {
   .map-container {
     width: 10%;
     height: 30vh;
-  }
+  } 
+  body {
+    overflow: hidden;
+}
+html {
+	overflow-x:hidden; 
+}
 
 @tailwind base;
 @tailwind components;

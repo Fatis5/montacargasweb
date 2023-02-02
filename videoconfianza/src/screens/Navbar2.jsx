@@ -3,10 +3,18 @@ import { Transition } from "@headlessui/react";
 import { Link } from "react-router-dom";
 import vc from "../media/vc.jpeg";
 
-function Navbar2() {
+
+
+function Navbar2(props) {
   const [isOpen, setIsOpen] = useState(false);
+
+
   return (
-    <div>
+
+      
+    <div
+    
+    >
       <nav className="white ">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-16">
@@ -20,7 +28,7 @@ function Navbar2() {
                       alt="VC Logo"
                     />
                     <span
-                      className="flex  whitespace-nowrap text-5xl  dark:text-white justify-center mr-5 "
+                      className="flex  whitespace-nowrap text-4xl  dark:text-white justify-center mr-5 "
                       style={{ fontFamily: "Harlekin" }}
                     >
                       Video confianza
@@ -173,6 +181,7 @@ function Navbar2() {
         </Transition>
       </nav>
     </div>
+
   );
 }
 

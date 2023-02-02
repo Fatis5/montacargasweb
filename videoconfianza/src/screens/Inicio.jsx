@@ -28,13 +28,11 @@ const Inicio = () => {
     <div className="relative bg-gradient-to-r from-blue-400 to-blue-500">
       
       <div>
-        <h1 className="text-gray-100 text-center font-extrabold md:text-7xl text-6xl  animate__animated animate__zoomInDown">
+        <h1 className="text-gray-100 text-center font-extrabold md:text-7xl text-3xl  animate__animated animate__zoomInDown">
           Instalación de Cámaras de Seguridad Inteligentes (CCTV).
         </h1>
 
-        <h2 className="mt-10 text-black text-center font-extrabold md:text-5xl text-4xl  animate__animated animate__zoomInDown">
-          Desde $3,000 MXN
-        </h2>
+
 
         <h3 className="text-white text-center font-bold md:text-2xl text-xl my-10 mx-auto animate__animated animate__zoomInUp">
           Somos instaladores y distribuidores de las marcas #1 en el mercado

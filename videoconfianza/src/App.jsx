@@ -17,15 +17,17 @@ import Wifi from "./screens/Servicios/Wifi";
 import { Route, Routes } from "react-router-dom";
 import Navbar2 from "./screens/Navbar2";
 import Tienda from "./Tienda/Tienda";
-import Subcategorias from "./Tienda/Subcategorias"
+import Subcategorias from "./Tienda/Subcategorias";
 import Productos from "./Tienda/Productos";
 import { ContextCredentials } from "./ContextCredentials";
 import { useState, useEffect } from "react";
 import getToken from "./methods/GetToken";
+import getTipoCambio from "./methods/TipoCambio";
 import DetalleProducto from "./Tienda/DetalleProducto";
 
 const App = () => {
   const [Token, setToken] = useState("");
+  const [TipoCambio, setTipoCambio] = useState("");
 
   useEffect(() => {
     getToken(setToken);
@@ -36,11 +38,12 @@ const App = () => {
       value={{
         Token,
         setToken,
+        TipoCambio,
+        setTipoCambio,
       }}
     >
-      <div>
+      <div >
         <Navbar2 />
-
         <Routes>
           <Route path="/" element={<Inicio />} />
           <Route path="/contacto" element={<Contacto />} />
@@ -60,7 +63,10 @@ const App = () => {
           <Route path="/tienda" element={<Tienda />} />
           <Route path="/subcategorias" element={<Subcategorias />} />
           <Route path="/productos" element={<Productos />} />
-          <Route path="/DetalleProducto/:producto_ID" element={<DetalleProducto />} />
+          <Route
+            path="/DetalleProducto/:producto_ID"
+            element={<DetalleProducto />}
+          />
         </Routes>
       </div>
     </ContextCredentials.Provider>
