@@ -1,50 +1,121 @@
-import React from "react";
+import React, { Component, useState } from "react";
+import axios from "axios";
+import { useContext } from "react";
+import { ContextCredentials } from "../ContextCredentials";
+import { useEffect } from "react";
+import getToken from "../methods/getToken";
 
 const Search = () => {
+  const { Token, setToken } = useContext(ContextCredentials);
+  const [Palabra, setPalabra] = useState("");
+  const [Productos, setProductos] = useState([]);
+  const [TipoCambio, setTipoCambio] = useState("");
+  const [ProductosAutorizados, setProductosAutorizados] = useState([]);
+
+  const getProductos = async (Nombre) => {
+    const config = {
+      headers: {
+        Authorization: "Bearer " + Token,
+      },
+
+      params: {
+        busqueda: Nombre,
+      },
+    };
+
+    const response = await axios.get(
+      "https://developers.syscom.mx/api/v1/productos",
+      config
+    );
+    console.log(response.data);
+    setProductos(response.data.productos);
+    setProductosAutorizados(
+      Productos.filter((producto) => producto.nota !== "SOLICITAR DISTRIBUCIÓN")
+    );
+
+    if (Palabra === "") {
+      setProductosAutorizados([]);
+    }
+  };
+
+  const getTipoCambio = async () => {
+    const config = {
+      headers: {
+        Authorization: "Bearer " + Token,
+      },
+    };
+
+    const response = await axios.get(
+      "https://developers.syscom.mx/api/v1/tipocambio",
+      config
+    );
+    console.log(response.data);
+    setTipoCambio(
+      //convert to float the data from the API
+      parseFloat(response.data.normal)
+      //response.data
+    );
+  };
+
+  useEffect(() => {
+    getToken(setToken);
+    console.log("Token: " + Token);
+  }, []);
+
+  useEffect(() => {
+    getTipoCambio();
+  }, [Token]);
+
   return (
-    <div 
-    className="flex justify-center items-center h-1/3"
-    >
-      <form>
-        <label
-          for="default-search"
-          className="mb-2 text-sm font-medium text-gray-900 sr-only dark:text-white "
-        >
-          Buscar
-        </label>
-        <div className="relative">
-          <div className="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
-            <svg
-              aria-hidden="true"
-              className="w-5 h-5 text-gray-500 dark:text-gray-400"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                stroke-width="2"
-                d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
-              ></path>
-            </svg>
-          </div>
-          <input
-            type="search"
-            id="default-search"
-            className="block w-full p-4 pl-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-            placeholder="Search Mockups, Logos..."
-            required
-          ></input>
-          <button
-            type="submit"
-            className="text-white absolute right-2.5 bottom-2.5 bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
-          >
-            Search
-          </button>
+    <div className="mx-auto flex flex-col">
+      <input
+        onChange={(e) => {
+          setPalabra(e.target.value);
+          getProductos(Palabra);
+        }}
+        placeholder="Buscar producto"
+        className="mx-auto md:w-1/3 w-4/5 border-2 border-gray-300 bg-white h-10 px-5 pr-16 rounded-lg text-sm focus:outline-none"
+        type="text"
+      />
+
+      {ProductosAutorizados.length > 0 && Palabra !== "" && (
+        <div className="overflow-y-auto h-60 md:w-1/3 w-4/5 mx-auto">
+          {ProductosAutorizados.map((producto) => (
+            <div className="px-3">
+              <div
+                key={producto.id}
+                className="mx-auto justify-center flex flex-row  "
+              >
+                <div className="mx-auto flex flex-col">
+                  <img
+                    className="mx-auto w-1/3"
+                    src={producto.img_portada}
+                    alt="imagen"
+                  />
+                  <img
+                    className="mx-auto w-1/3"
+                    src={producto.marca_logo}
+                    alt="marca"
+                  />
+                </div>
+                <div className="mx-auto flex flex-col ">
+                  <p className="mx-auto text-sm font-bold">{producto.titulo}</p>
+                  <h1 className="text-center text-sm  text-orange-500 font-bold my-3 animate__animated animate__fadeInUp">
+                    MX $
+                    {(
+                      producto.precios.precio_descuento * TipoCambio +
+                      producto.precios.precio_descuento * TipoCambio * 0.36
+                    )
+                      .toFixed(2)
+                      .replace(/\d(?=(\d{3})+\.)/g, "$&,")}
+                  </h1>
+                </div>
+              </div>
+              <hr className="border-black w-full m-2" />
+            </div>
+          ))}
         </div>
-      </form>
+      )}
     </div>
   );
 };

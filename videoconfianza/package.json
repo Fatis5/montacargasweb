@@ -39,6 +39,7 @@
     "react-intersection-observer": "^9.3.5",
     "react-leaflet": "^4.0.1",
     "react-router-dom": "^6.3.0",
+    "react-search-box": "^2.3.0",
     "react-slick": "^0.29.0",
     "slick-carousel": "^1.8.1",
     "styled-components": "^5.3.6",
