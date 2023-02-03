@@ -75,9 +75,12 @@ const Productos = () => {
 
   return (
     <div className="bg-gradient-to-r from-cyan-500 to-blue-500">
+      
       <h1 className="text-center text-5xl text-white font-bold m-5 animate__animated animate__fadeInUp">
         {Nombre}
       </h1>
+
+      <Search />
 
       <div className="flex flex-wrap align-middle justify-center">
         {Productos.length === 0 && (

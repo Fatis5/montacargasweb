@@ -4,8 +4,10 @@ import { useEffect, useState, useContext } from "react";
 import Loading from "../littleComponents/Loading";
 import Footer from "../screens/Footer";
 import { ContextCredentials } from "../ContextCredentials";
-import {Link, useLocation, Navigate} from "react-router-dom";
-
+import { Link, useLocation, Navigate } from "react-router-dom";
+import Search from "../littleComponents/Search";
+import CartButton from "../littleComponents/CartButton";
+import IconCart from "../littleComponents/IconCart";
 
 const Tienda = () => {
   const { Token, setToken } = useContext(ContextCredentials);
@@ -25,16 +27,15 @@ const Tienda = () => {
     setCategorias(response.data);
   };
 
-
   useEffect(() => {
     getCategorias();
   }, [Token]);
 
   return (
-    <div className=" flex flex-col justify-center align-center bg-gradient-to-r bg-blue-500">
-      <h1 className="text-center text-5xl text-white  mt-5 animate__animated animate__fadeInUp"
-
-      style={{fontFamily: "Harlekin"}}
+    <div className=" flex flex-col  bg-gradient-to-r bg-blue-500  ">
+      <h1
+        className="text-center text-5xl text-white  mt-5 animate__animated animate__fadeInUp"
+        style={{ fontFamily: "Harlekin" }}
       >
         Video confianza
       </h1>
@@ -45,13 +46,20 @@ const Tienda = () => {
       <h2 className="text-center text-3xl text-white font-bold mt-5 animate__animated animate__fadeInUp">
         ¿Qué necesitas hoy?
       </h2>
+
+      
+
+      <div className="mt-5">
+          <Search />
+        </div>
+ 
       {Categorias.length === 0 && (
         <div className="mx-auto flex justify-center my-auto align-middle w-full h-1/2">
           <Loading />
         </div>
       )}
       {Categorias.length > 0 &&
-        Categorias.map((categoria) => (
+          Categorias.map((categoria) => (
           <Link
             to="/subcategorias"
             state={{
@@ -66,7 +74,9 @@ const Tienda = () => {
               </h1>
             </div>
           </Link>
-        ))}
+        ))
+      
+        }
 
       <Footer />
     </div>
