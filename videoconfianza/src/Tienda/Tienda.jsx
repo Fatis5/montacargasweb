@@ -33,33 +33,38 @@ const Tienda = () => {
 
   return (
     <div className=" flex flex-col  bg-gradient-to-r bg-blue-500  ">
-      <h1
-        className="text-center text-5xl text-white  mt-5 animate__animated animate__fadeInUp"
-        style={{ fontFamily: "Harlekin" }}
-      >
-        Video confianza
-      </h1>
-      <h1 className="text-center text-5xl text-white font-bold  animate__animated animate__fadeInUp">
-        Tienda Oficial
-      </h1>
+      <div className=" flex flex-row justify-center static">
+        <div>
+          <h1
+            className="text-center text-5xl text-white  mt-5 animate__animated animate__fadeInUp "
+            style={{ fontFamily: "Harlekin" }}
+          >
+            Video confianza
+          </h1>
+          <h1 className="text-center text-5xl text-white font-bold  animate__animated animate__fadeInUp">
+            Tienda Oficial
+          </h1>
 
-      <h2 className="text-center text-3xl text-white font-bold mt-5 animate__animated animate__fadeInUp">
-        ¿Qué necesitas hoy?
-      </h2>
-
-      
+          <h2 className="text-center text-3xl text-white font-bold mt-5 animate__animated animate__fadeInUp">
+            ¿Qué necesitas hoy?
+          </h2>
+        </div>
+        <div className="m-10 animate__animated animate__fadeInUp absolute md:right-0 -right-10 top-4">
+          <IconCart />
+        </div>
+      </div>
 
       <div className="mt-5">
-          <Search />
-        </div>
- 
+        <Search />
+      </div>
+
       {Categorias.length === 0 && (
         <div className="mx-auto flex justify-center my-auto align-middle w-full h-1/2">
           <Loading />
         </div>
       )}
       {Categorias.length > 0 &&
-          Categorias.map((categoria) => (
+        Categorias.map((categoria) => (
           <Link
             to="/subcategorias"
             state={{
@@ -74,9 +79,9 @@ const Tienda = () => {
               </h1>
             </div>
           </Link>
-        ))
-      
-        }
+
+        ))}
+
 
       <Footer />
     </div>

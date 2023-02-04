@@ -6,6 +6,7 @@ import { ContextCredentials } from "../ContextCredentials";
 import axios from "axios";
 import Loading from "../littleComponents/Loading";
 import getToken from "../methods/getToken";
+import IconCart from "../littleComponents/IconCart";
 
 const Subcategorias = () => {
   const location = useLocation();
@@ -38,40 +39,40 @@ const Subcategorias = () => {
 
   return (
     <div className="bg-blue-500">
-      <h1 className="text-center text-4xl text-white font-bold m-5 animate__animated animate__fadeInUp">
-        ¿Qué vas a ocupar en {Subcategorias.nombre}?
-      </h1>
-
-      <div
-      className="flex flex-wrap justify-center items-center"
-      >
-
-      {Subcategorias !== "" && (
-        <div   className="flex flex-wrap align-middle justify-center">
-          {Subcategorias.subcategorias.map((subcategoria) => {
-            return (
-              <div className="bg-white md:w-1/3 w-11/12 m-10 justify-center rounded-md h-1/3">
-                <Link
-                  to="/productos"
-                  state={{
-                    nombre: subcategoria.nombre,
-                  }}
-                  key={Subcategorias.id}
-                >
-                  <h2
-                  
-                  className="text-center text-2xl text-black font-bold m-5"
-                  >{subcategoria.nombre}</h2>
-                </Link>
-              </div>
-            );
-          })}
+      <div className=" flex flex-row justify-center static">
+        <div>
+          <h1 className="text-center text-4xl text-white font-bold m-5 animate__animated animate__fadeInUp">
+            ¿Qué vas a ocupar en {Subcategorias.nombre}?
+          </h1>
         </div>
-      )}
-
+        <div className="m-10 animate__animated animate__fadeInUp absolute md:right-0 -right-10 md:top-2 mt-10">
+          <IconCart />
+        </div>
       </div>
 
-
+      <div className="flex flex-wrap justify-center items-center">
+        {Subcategorias !== "" && (
+          <div className="flex flex-wrap align-middle justify-center">
+            {Subcategorias.subcategorias.map((subcategoria) => {
+              return (
+                <div className="bg-white md:w-1/3 w-11/12 m-10 justify-center rounded-md h-1/3">
+                  <Link
+                    to="/productos"
+                    state={{
+                      nombre: subcategoria.nombre,
+                    }}
+                    key={Subcategorias.id}
+                  >
+                    <h2 className="text-center text-2xl text-black font-bold m-5">
+                      {subcategoria.nombre}
+                    </h2>
+                  </Link>
+                </div>
+              );
+            })}
+          </div>
+        )}
+      </div>
     </div>
   );
 };

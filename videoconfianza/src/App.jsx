@@ -29,6 +29,7 @@ import Search from "./littleComponents/Search";
 const App = () => {
   const [Token, setToken] = useState("");
   const [TipoCambio, setTipoCambio] = useState("");
+  const [Cart, setCart] = useState([])
 
   useEffect(() => {
     getToken(setToken);
@@ -41,6 +42,8 @@ const App = () => {
         setToken,
         TipoCambio,
         setTipoCambio,
+        Cart,
+        setCart
       }}
     >
       <div >

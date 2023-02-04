@@ -7,6 +7,7 @@ import Loading from "../littleComponents/Loading";
 import { ContextCredentials } from "../ContextCredentials";
 import Iva from "../littleComponents/Iva";
 import CartButton from "../littleComponents/CartButton";
+import IconCart from "../littleComponents/IconCart";
 
 
 const DetalleProducto = () => {
@@ -65,6 +66,9 @@ const DetalleProducto = () => {
 
   return (
     <div>
+     <div className="m-10 animate__animated animate__fadeInUp absolute md:right-0 -right-10 top-4">
+          <IconCart />
+        </div>
       {Producto.length === 0 && <Loading />}
       {Producto.length !== 0 && (
         <div className="flex   md:flex-row flex-col">
@@ -126,7 +130,7 @@ const DetalleProducto = () => {
               </h1>
               <Iva />
             </div>
-          <CartButton/>
+          <CartButton/> 
           </div>
         </div>
       )}

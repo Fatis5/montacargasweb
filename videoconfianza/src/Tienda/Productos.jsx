@@ -10,6 +10,7 @@ import Search from "../littleComponents/Search";
 import getTipoCambio from "../methods/TipoCambio";
 import Iva from "../littleComponents/Iva";
 import CartButton from "../littleComponents/CartButton";
+import IconCart from "../littleComponents/IconCart";
 
 const Productos = () => {
   const [Productos, setProductos] = useState([]);
@@ -75,11 +76,15 @@ const Productos = () => {
 
   return (
     <div className="bg-gradient-to-r from-cyan-500 to-blue-500">
-      
-      <h1 className="text-center text-5xl text-white font-bold m-5 animate__animated animate__fadeInUp">
-        {Nombre}
-      </h1>
+      <div className=" flex flex-row justify-center static">
+        <h1 className="text-center text-5xl text-white font-bold m-5 animate__animated animate__fadeInUp">
+          {Nombre}
+        </h1>
 
+        <div className="m-10 animate__animated animate__fadeInUp absolute md:right-0 -right-10 top-4">
+          <IconCart />
+        </div>
+      </div>
       <Search />
 
       <div className="flex flex-wrap align-middle justify-center">
@@ -126,8 +131,18 @@ const Productos = () => {
               </h1>
               <Iva className="animate__animated animate__fadeInUp" />
 
-              <div class="flex flex-row">
-                <CartButton />
+              <div>
+                <CartButton 
+                
+                id={producto.producto_id}
+                modelo={producto.modelo}
+                precio={producto.precios.precio_descuento}
+                img={producto.img_portada}
+                titulo={producto.titulo}
+                marca={producto.marca}
+                cantidad={0}
+
+                />
               </div>
             </div>
           );

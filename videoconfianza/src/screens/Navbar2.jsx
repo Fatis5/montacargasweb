@@ -2,19 +2,13 @@ import React, { useState } from "react";
 import { Transition } from "@headlessui/react";
 import { Link } from "react-router-dom";
 import vc from "../media/vc.jpeg";
-
-
+import IconCart from "../littleComponents/IconCart";
 
 function Navbar2(props) {
   const [isOpen, setIsOpen] = useState(false);
 
-
   return (
-
-      
-    <div
-    
-    >
+    <div>
       <nav className="white ">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-16">
@@ -33,6 +27,8 @@ function Navbar2(props) {
                     >
                       Video confianza
                     </span>
+                    
+                 
                   </div>
                 </Link>
               </div>
@@ -181,7 +177,6 @@ function Navbar2(props) {
         </Transition>
       </nav>
     </div>
-
   );
 }
 
