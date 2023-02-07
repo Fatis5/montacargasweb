@@ -11,6 +11,7 @@ import getTipoCambio from "../methods/TipoCambio";
 import Iva from "../littleComponents/Iva";
 import CartButton from "../littleComponents/CartButton";
 import IconCart from "../littleComponents/IconCart";
+import Precio from "../littleComponents/Precio";
 
 const Productos = () => {
   const [Productos, setProductos] = useState([]);
@@ -120,7 +121,7 @@ const Productos = () => {
                 ${(producto.precios.precio_lista * TipoCambio).toFixed(2)}
               </h1>
 
-              <h1 className="text-center text-3xl text-orange-500 font-bold my-3 animate__animated animate__fadeInUp">
+       {/*        <h1 className="text-center text-3xl text-orange-500 font-bold my-3 animate__animated animate__fadeInUp">
                 MX $
                 {(
                   producto.precios.precio_descuento * TipoCambio +
@@ -128,11 +129,14 @@ const Productos = () => {
                 )
                   .toFixed(2)
                   .replace(/\d(?=(\d{3})+\.)/g, "$&,")}
-              </h1>
+              </h1> */}
+              <Precio
+              precio={producto.precios.precio_descuento}
+              />
               <Iva className="animate__animated animate__fadeInUp" />
 
               <div>
-                <CartButton 
+              <CartButton 
                 
                 id={producto.producto_id}
                 modelo={producto.modelo}
@@ -142,7 +146,7 @@ const Productos = () => {
                 marca={producto.marca}
                 cantidad={0}
 
-                />
+                /> 
               </div>
             </div>
           );

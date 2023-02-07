@@ -8,6 +8,7 @@ import { ContextCredentials } from "../ContextCredentials";
 import Iva from "../littleComponents/Iva";
 import CartButton from "../littleComponents/CartButton";
 import IconCart from "../littleComponents/IconCart";
+import Precio from "../littleComponents/Precio";
 
 
 const DetalleProducto = () => {
@@ -121,16 +122,29 @@ const DetalleProducto = () => {
 
             <div className="flex flex-row justify-center mx-auto">
               {" "}
-              <h1 className="text-center text-4xl text-orange-500 font-bold  animate__animated animate__fadeInUp italic">
+       {/*        <h1 className="text-center text-4xl text-orange-500 font-bold  animate__animated animate__fadeInUp italic">
                 MX $
                 {(
                   Producto.precios.precio_descuento * TipoCambio +
                   Producto.precios.precio_descuento * TipoCambio * 0.36
                 ).toFixed(2)}
-              </h1>
+              </h1> */}
+              <Precio
+              precio={Producto.precios.precio_descuento}
+              />
               <Iva />
             </div>
-          <CartButton/> 
+            <CartButton 
+                
+                id={Producto.producto_id}
+                modelo={Producto.modelo}
+                precio={Producto.precios.precio_descuento}
+                img={Producto.img_portada}
+                titulo={Producto.titulo}
+                marca={Producto.marca}
+                cantidad={0}
+
+                />
           </div>
         </div>
       )}

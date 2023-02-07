@@ -25,6 +25,7 @@ import getToken from "./methods/GetToken";
 import getTipoCambio from "./methods/TipoCambio";
 import DetalleProducto from "./Tienda/DetalleProducto";
 import Search from "./littleComponents/Search";
+import Carrito from "./Tienda/Carrito";
 
 const App = () => {
   const [Token, setToken] = useState("");
@@ -68,6 +69,7 @@ const App = () => {
           <Route path="/subcategorias" element={<Subcategorias />} />
           <Route path="/search" element={<Search />} />
           <Route path="/productos" element={<Productos />} />
+          <Route path="/carrito" element={<Carrito/>} />
           <Route
             path="/DetalleProducto/:producto_ID"
             element={<DetalleProducto />}

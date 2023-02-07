@@ -55,7 +55,9 @@ const Subcategorias = () => {
           <div className="flex flex-wrap align-middle justify-center">
             {Subcategorias.subcategorias.map((subcategoria) => {
               return (
-                <div className="bg-white md:w-1/3 w-11/12 m-10 justify-center rounded-md h-1/3">
+                <div 
+                key={subcategoria.id}
+                className="bg-white md:w-1/3 w-11/12 m-10 justify-center rounded-md h-1/3">
                   <Link
                     to="/productos"
                     state={{
