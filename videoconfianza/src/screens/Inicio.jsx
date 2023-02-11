@@ -13,6 +13,7 @@ import full from "../media/full.jpg";
 import FloatingWhatsApp from "react-floating-whatsapp";
 import vc from "../media/vc.jpeg";
 import Contacto from "./Contacto";
+import camras from "../media/camras.jpg";
 import Footer from "./Footer";
 import Collage from "./Collage";
 import Servicios from "./Servicios";
@@ -22,47 +23,66 @@ import Presentacion from "./Presentacion";
 import Derechos from "./Derechos";
 import { Animated } from "react-animated-css";
 import Navbar2 from "./Navbar2";
+import { GiCctvCamera } from "react-icons/gi";
+import BotonTienda from "./Servicios/BotonTienda";
 
 const Inicio = () => {
   return (
     <div className="relative bg-gradient-to-r from-blue-400 to-blue-500">
-      
-      <div>
+      <div
+        className="h-screen w-full flex flex-col justify-center items-center bg-cover bg-center bg-no-repeat bg-scroll"
+        style={{
+          backgroundImage: `url(${camras})`,
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+          backgroundRepeat: "no-repeat",
+          //adjust the opacity of the background image and the color
+          backgroundBlendMode: "multiply",
+          backgroundColor: "rgba(0, 0, 0, 0.5)",
+          // add animate__animated animate__zoomInDown
+        }}
+      >
         <h1 className="text-gray-100 text-center font-extrabold md:text-7xl text-3xl  animate__animated animate__zoomInDown">
-          Instalación de Cámaras de Seguridad Inteligentes (CCTV).
+          CÁMARAS DE SEGURIDAD Y ALARMAS
         </h1>
-
-
 
         <h3 className="text-white text-center font-bold md:text-2xl text-xl my-10 mx-auto animate__animated animate__zoomInUp">
           Somos instaladores y distribuidores de las marcas #1 en el mercado
         </h3>
+ 
+        <BotonTienda />
+   
+
       </div>
 
       <div>
-        <div>
-          <Collage />
-        </div>
+        <Testimonios />
+      </div>
 
-        <div>
-          <Presentacion />
-        </div>
+ 
 
-        <div>
-          <Servicios />
-        </div>
+{/*        <div>
+        <Collage />
+      </div>  */}
 
-        <div>
-          <Testimonios />
-        </div>
+   
 
-        <div>
-          <Footer />
-        </div>
+      <div>
+        <Presentacion />
+      </div>
 
-        <div>
-          <Derechos />
-        </div>
+      <div>
+        <Servicios />
+      </div>
+
+ 
+
+      <div>
+        <Footer />
+      </div>
+
+      <div>
+        <Derechos />
       </div>
 
       <FloatingWhatsApp

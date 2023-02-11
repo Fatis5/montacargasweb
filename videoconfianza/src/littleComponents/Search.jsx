@@ -22,7 +22,6 @@ const Search = () => {
 
       params: {
         busqueda: Nombre,
-        
       },
     };
 
@@ -72,9 +71,9 @@ const Search = () => {
   return (
     <div className="mx-auto flex flex-col">
       <input
-        onChange={(e) => {
+        onChangeCapture={(e) => {
           setPalabra(e.target.value);
-          getProductos(Palabra);
+          getProductos(e.target.value);
         }}
         placeholder="Buscar producto escribiendo el modelo o nombre"
         className="mx-auto md:w-1/3 w-4/5 border-2 border-gray-300 bg-white h-10 px-5 pr-16 rounded-lg text-sm focus:outline-none"
