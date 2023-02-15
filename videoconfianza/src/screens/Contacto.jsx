@@ -23,15 +23,15 @@ const Contacto = () => {
             <h1 className="mb-3 mx-auto text-5xl">Contáctanos:</h1>
             <div className="flex flex-row mr-1 mt-1 mb-1 items-stretch ">
               <FaWhatsapp className="mt-3 text-3xl"/>
-              <a className="mt-3  text-3xl " href="tel:5522815315" hover="red">
-                55-22-81-53-15
+              <a className="mt-3  text-xl md:text-3xl" href="tel:5513450478" hover="red">
+                55-13-45-04-78
               </a>
             </div>
 
             <div className="flex flex-row mr-1 mt-1 mb-1">
               <HiOutlineMail className="mt-3 mx-auto text-3xl"/>
-              <a className="mt-3 mx-auto text-3xl" href="mailto: videoconfianza@gmail.com" hover="red">
-                videoconfianza@gmail.com
+              <a className="mt-3 mx-3 md:mx-auto text-xl md:text-3xl" href="mailto: cotizaciones@videoconfianza.com" hover="red">
+              cotizaciones@videoconfianza.com
               </a>
             </div>
 

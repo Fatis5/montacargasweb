@@ -1,5 +1,4 @@
 import React from "react";
-import camrasvideo from "../media/camrasvideo.mp4";
 import camera2 from "../media/camera2.jpg";
 import "animate.css/animate.min.css";
 import dahua from "../media/dahua.jpg";
@@ -25,6 +24,7 @@ import { Animated } from "react-animated-css";
 import Navbar2 from "./Navbar2";
 import { GiCctvCamera } from "react-icons/gi";
 import BotonTienda from "./Servicios/BotonTienda";
+import Buttons from "./Buttons";
 
 const Inicio = () => {
   return (
@@ -43,21 +43,21 @@ const Inicio = () => {
         }}
       >
         <h1 className="text-gray-100 text-center font-extrabold md:text-7xl text-3xl  animate__animated animate__zoomInDown">
-          CÁMARAS DE SEGURIDAD Y ALARMAS
-        </h1>
+          CÁMARAS DE SEGURIDAD, REDES Y ALARMAS        </h1>
 
         <h3 className="text-white text-center font-bold md:text-2xl text-xl my-10 mx-auto animate__animated animate__zoomInUp">
           Somos instaladores y distribuidores de las marcas #1 en el mercado
         </h3>
  
         <BotonTienda />
+        <Buttons/>
    
 
       </div>
 
-      <div>
+  {/*     <div>
         <Testimonios />
-      </div>
+      </div> */}
 
  
 
@@ -67,7 +67,9 @@ const Inicio = () => {
 
    
 
-      <div>
+      <div
+      className="animate__animated animate__zoomInDown my-10"
+      >
         <Presentacion />
       </div>
 
@@ -86,12 +88,13 @@ const Inicio = () => {
       </div>
 
       <FloatingWhatsApp
-        phoneNumber="+5215522815315"
+        phoneNumber="+525513450478"
         accountName="Video Confianza"
         avatar={vc}
         statusMessage="Enviar mensaje"
         chatMessage="Hola, ¿En qué podemos ayudarte?"
         placeholder="Escribe tu mensaje"
+        
       />
     </div>
   );

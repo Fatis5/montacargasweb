@@ -13,7 +13,7 @@ const Presentacion = () => {
         className=" text-gray-50 md:text-3xl  text-xl text-justify md:my-auto my-5  mx-8"
       >
         Empresa 100% mexicana dedicada a la instalación y venta de sistemas de
-        seguridad electrónica, con los mejores ingenieros del país.
+        seguridad electrónica, redes y alarmas  con los mejores ingenieros del país.
       </h1>
 
       <img className="rounded-2xl h-10/12 mx-auto" src={test4} />

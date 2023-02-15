@@ -111,7 +111,7 @@ const Servicios = () => {
   return (
     <div className="bg-gradient-to-r from-blue-400 to-blue-500">
       <div>
-        <h1 className=" text-center py-10 text-white text-8xl animate__animated animate__fadeInUp">
+        <h1 className=" text-center py-10 text-white text-5xl md:text-8xl animate__animated animate__fadeInUp">
           {" "}
           Servicios:
         </h1>

@@ -173,7 +173,7 @@ const Carrito = () => {
               <a
                 classNameName="text-center text-sm font-bold text-gray-700 mt-1 mb-4 underline"
                 //send cart to whatsapp
-                href={`https://wa.me/+525522815315?text=Hola,%20me%20gustaría%20realizar%20el%20siguiente%20pedido:%20${Carro2.map(
+                href={`https://wa.me/+525513450478?text=Hola,%20me%20gustaría%20realizar%20el%20siguiente%20pedido:%20${Carro2.map(
                   (item) => `%20*${item.cantidad}%20=>%20${item.modelo}*%20%20`
                 )}%20Total:%20${_.sumBy(
                   Carro2,
