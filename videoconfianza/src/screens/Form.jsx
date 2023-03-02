@@ -32,31 +32,49 @@ const Form = () => {
       ref={form}
       onSubmit={sendEmail}
     >
-      <label className="text-white mt-2 mx-auto text-xl font-bold">
+
+      <label 
+      htmlFor="Contacto"
+      className="text-white mt-2 mx-auto text-xl font-bold">
         También puedes enviarnos un correo
       </label>
-      <label className="text-white mt-2 mx-auto">Nombre</label>
+      <label 
+      htmlFor="Nombre"
+      className="text-white mt-2 mx-auto">Nombre</label>
       <input
         className="rounded-lg mx-2 h-10 text-xl"
         type="text"
         name="user_name"
+       
+
       />
-      <label className="text-white mt-2 mx-auto text-xl">Email</label>
+      <label 
+      htmlFor="Email"
+      className="text-white mt-2 mx-auto text-xl">Email</label>
       <input className="rounded-lg mx-2 h-10" type="email" name="user_email" />
-      <label className="text-white mt-2 mx-auto text-xl ">Teléfono</label>
+      <label 
+      htmlFor="Teléfono"
+      className="text-white mt-2 mx-auto text-xl ">Teléfono</label>
       <input
         className="rounded-lg mx-2 h-10 text-xl text-center"
         type="tel"
         name="telefono"
       />
-      <label className="text-white mt-2 mx-auto text-xl">Mensaje</label>
-      <textarea className="rounded-lg mx-2 h-20" rows="5" name="message" />
+      <label 
+      htmlFor="Mensaje"
+      className="text-white mt-2 mx-auto text-xl">Mensaje</label>
+      <textarea
+      typeof="text"
+     
+      className="rounded-lg mx-2 h-20" rows="5" name="message" />
 
       <input
         className="bg-black hover:bg-gray-700 text-white font-bold mx-auto mt-2 rounded focus:outline-none focus:shadow-outline text-xl uppercase py-0 px-4"
         type="submit"
         value="Enviar"
+        
       />
+  
     </form>
   );
 };

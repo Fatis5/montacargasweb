@@ -1,6 +1,6 @@
 import React from "react";
 import Buttons from "../Buttons";
-import camras from "../../media/camras.jpg";
+
 import {FaCashRegister} from "react-icons/fa";
 import Footer from "../Footer";
 import Derechos from "../Derechos";
@@ -8,7 +8,7 @@ import { AiOutlineCheckCircle } from "react-icons/ai";
 import { useLocation } from "react-router-dom";
 import { useEffect } from "react";
 import circuito from "../../media/circuito.png";
-import pventa from "../../media/pventa.jpeg";
+
 const Hardwere = () => {
   const location = useLocation();
    

@@ -1,18 +1,17 @@
 import React from "react";
-import full from "../../media/full.jpg";
-import vc from "../../media/vc.jpeg";
+
 import camera2 from "../../media/camera2.jpg";
 import Buttons from "../Buttons";
 import camras from "../../media/camras.jpg";
-import precio from "../../media/precio.jpg";
+
 import test3 from "../../media/test3.jpg";
 import { TbDeviceCctv } from "react-icons/tb";
 import Footer from "../Footer";
 import Derechos from "../Derechos";
 import { AiOutlineCheckCircle } from "react-icons/ai";
-import opencv from "../../media/opencv.jpg";
+
 import ia3 from "../../media/ia3.png";
-import { v4 as uuidv4 } from "uuid";
+
 import { useLocation } from "react-router-dom";
 import { useEffect } from "react";
 

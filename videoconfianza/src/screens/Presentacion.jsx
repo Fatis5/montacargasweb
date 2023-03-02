@@ -16,7 +16,9 @@ const Presentacion = () => {
         seguridad electrónica, redes y alarmas  con los mejores ingenieros del país.
       </h1>
 
-      <img className="rounded-2xl h-10/12 mx-auto" src={test4} />
+      <img 
+      alt="video confianza"
+      className="rounded-2xl h-10/12 mx-auto" src={test4} />
     </div>
   );
 };

@@ -4,10 +4,14 @@ import { useContext } from "react";
 import { ContextCredentials } from "../ContextCredentials";
 import { useEffect } from "react";
 import getToken from "../methods/getToken";
-import Iva from "./Iva";
+import Iva from "../littleComponents/Iva";
 import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+
+
 
 const Search = () => {
+  const navigate = useNavigate();
   const { Token, setToken } = useContext(ContextCredentials);
   const [Palabra, setPalabra] = useState("");
   const [Productos, setProductos] = useState([]);
@@ -68,20 +72,35 @@ const Search = () => {
     getTipoCambio();
   }, [Token]);
 
+
   return (
     <div className="mx-auto flex flex-col">
       <input
-        onChangeCapture={(e) => {
+        onChangeCapture ={(e) => {
           setPalabra(e.target.value);
-          getProductos(e.target.value);
+         /*  getProductos(
+            Palabra.replace(/ /g, "+")
+          ); */
+        }} 
+        onKeyDownCapture={(e) => {
+          if (e.key === "Enter") {
+            setPalabra(e.target.value);
+            navigate(`/ProductosBuscados/${Palabra.replace(/ /g, "+")}`
+            
+            
+            
+            );
+            
+          }
         }}
+
         placeholder="Buscar producto escribiendo el modelo o nombre"
         className="mx-auto md:w-1/3 w-4/5 border-2 border-gray-300 bg-white h-10 px-5 pr-16 rounded-lg text-sm focus:outline-none"
         type="text"
         value={Palabra}
       />
 
-      {ProductosAutorizados.length > 0 && Palabra !== "" && (
+      {/* {ProductosAutorizados.length > 0 && Palabra !== "" && (
         <div className="overflow-y-auto h-80 md:w-1/3 w-4/5 mx-auto">
           {ProductosAutorizados.map((producto) => (
             <div className="px-3 bg-slate-50">
@@ -122,7 +141,7 @@ const Search = () => {
             </div>
           ))}
         </div>
-      )}
+      )} */}
     </div>
   );
 };

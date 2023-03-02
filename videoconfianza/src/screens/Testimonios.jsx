@@ -3,7 +3,7 @@ import { useInView } from "react-intersection-observer";
 import CountUp from "react-countup";
 import { BiHappyAlt, BiCctv } from "react-icons/bi";
 import { AiOutlineFieldTime } from "react-icons/ai";
-import { FaCashRegister } from "react-icons/fa";
+
 
 const Testimonios = () => {
   const { ref, inView } = useInView({

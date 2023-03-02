@@ -1,5 +1,5 @@
 import hikvison from "../media/hikvison.png";
-import samsung from "../media/samsung.png";
+
 import bosh from "../media/bosh.png";
 import sm4 from "../media/sm4.png";
 import dahua5 from "../media/dahua5.png";

@@ -1,7 +1,7 @@
 import React from "react";
-import puntos from "../../media/puntos.png";
+
 import wifi4 from "../../media/wifi4.png";
-import puntopunto from "../../media/puntopunto.png";
+
 import Buttons from "../Buttons";
 import Footer from "../Footer";
 import Derechos from "../Derechos";
@@ -9,9 +9,9 @@ import { AiOutlineCheckCircle } from "react-icons/ai";
 import { useLocation } from "react-router-dom";
 import { useEffect } from "react";
 import {AiOutlineWifi} from "react-icons/ai";
-import {BsSoundwave} from "react-icons/bs";
+
 import wifizone from "../../media/wifizone.jpg";
-import {FcWiFiLogo} from "react-icons/fc";
+
 
 const Wifi = () => {
   const location = useLocation();

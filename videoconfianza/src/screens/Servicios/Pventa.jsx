@@ -1,6 +1,6 @@
 import React from "react";
 import Buttons from "../Buttons";
-import camras from "../../media/camras.jpg";
+
 import {FaCashRegister} from "react-icons/fa";
 import Footer from "../Footer";
 import Derechos from "../Derechos";

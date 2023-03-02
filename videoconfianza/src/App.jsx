@@ -22,10 +22,12 @@ import Productos from "./Tienda/Productos";
 import { ContextCredentials } from "./ContextCredentials";
 import { useState, useEffect } from "react";
 import getToken from "./methods/GetToken";
-import getTipoCambio from "./methods/TipoCambio";
+
 import DetalleProducto from "./Tienda/DetalleProducto";
 import Search from "./littleComponents/Search";
 import Carrito from "./Tienda/Carrito";
+import ProductosBuscados from "./Tienda/ProductosBuscados";
+
 
 const App = () => {
   const [Token, setToken] = useState("");
@@ -37,6 +39,9 @@ const App = () => {
   }, []);
 
   return (
+
+
+ 
     <ContextCredentials.Provider
       value={{
         Token,
@@ -70,6 +75,7 @@ const App = () => {
           <Route path="/search" element={<Search />} />
           <Route path="/productos" element={<Productos />} />
           <Route path="/carrito" element={<Carrito/>} />
+          <Route path="/ProductosBuscados/:producto_Nombre" element={<ProductosBuscados />} />
           <Route
             path="/DetalleProducto/:producto_ID"
             element={<DetalleProducto />}
@@ -77,6 +83,7 @@ const App = () => {
         </Routes>
       </div>
     </ContextCredentials.Provider>
+
   );
 };
 
