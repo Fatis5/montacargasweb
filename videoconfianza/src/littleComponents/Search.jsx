@@ -7,8 +7,7 @@ import getToken from "../methods/getToken";
 import Iva from "../littleComponents/Iva";
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
-
-
+import { VscSearch } from "react-icons/vsc";
 
 const Search = () => {
   const navigate = useNavigate();
@@ -26,6 +25,7 @@ const Search = () => {
 
       params: {
         busqueda: Nombre,
+       
       },
     };
 
@@ -72,33 +72,45 @@ const Search = () => {
     getTipoCambio();
   }, [Token]);
 
-
   return (
-    <div className="mx-auto flex flex-col">
+    <div className="mx-auto flex flex-row justify-center w-full m-5">
       <input
-        onChangeCapture ={(e) => {
+        onChangeCapture={(e) => {
           setPalabra(e.target.value);
-         /*  getProductos(
+          /*  getProductos(
             Palabra.replace(/ /g, "+")
           ); */
-        }} 
+        }}
         onKeyDownCapture={(e) => {
           if (e.key === "Enter") {
             setPalabra(e.target.value);
-            navigate(`/ProductosBuscados/${Palabra.replace(/ /g, "+")}`
-            
-            
-            
-            );
-            
+            navigate(`/ProductosBuscados/${Palabra.replace(/ /g, "+")}`);
           }
         }}
-
-        placeholder="Buscar producto escribiendo el modelo o nombre"
-        className="mx-auto md:w-1/3 w-4/5 border-2 border-gray-300 bg-white h-10 px-5 pr-16 rounded-lg text-sm focus:outline-none"
+        placeholder="Buscar producto en la tienda"
+        className="  md:w-1/3 w-4/5 border-4 focus:border-yellow-300 border-yellow-200  bg-white h-10 px-5 pr-16 rounded-lg text-sm focus:outline-none"
         type="text"
         value={Palabra}
       />
+
+{
+  Palabra !== "" && (
+<div
+className="bg-red-500 w-10 h-10 rounded-md ml-3 flex items-center justify-center "
+
+>
+
+    <button
+        onClick={() => {
+          navigate(`/ProductosBuscados/${Palabra.replace(/ /g, "+")}`);
+        }}
+      >
+        <VscSearch className="mx-auto text-2xl font-bold text-yellow-300" />
+      </button>
+
+</div>
+  )
+}
 
       {/* {ProductosAutorizados.length > 0 && Palabra !== "" && (
         <div className="overflow-y-auto h-80 md:w-1/3 w-4/5 mx-auto">

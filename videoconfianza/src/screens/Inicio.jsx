@@ -4,6 +4,7 @@ import "animate.css/animate.min.css";
 import FloatingWhatsApp from "react-floating-whatsapp";
 import vc from "../media/vc.jpeg";
 import camras from "../media/camras.jpg";
+import Search from '../littleComponents/Search';
 const Footer = loadable(() => import('./Footer'))
 const Servicios = loadable(() => import('./Servicios'))
 const Presentacion = loadable(() => import('./Presentacion'))
@@ -36,10 +37,12 @@ const Inicio = () => {
         </h1>
 
         <h2 className="text-white text-center font-bold md:text-2xl text-xl my-10 mx-auto animate__animated animate__zoomInUp">
-          Somos instaladores y distribuidores de las marcas #1 en el mercado
+          Instalación, mantenimiento y venta de equipos de seguridad
         </h2>
 
-        <BotonTienda />
+       <BotonTienda />
+
+  
         <Buttons />
       </div>
 
