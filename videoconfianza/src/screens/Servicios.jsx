@@ -56,6 +56,15 @@ const Servicios = () => {
         "Los controles de acceso es una herramienta que te permitirá controlar el acceso a tu casa, oficina, negocio o empresa",
       route: "/acces",
     },
+/*     {
+      id: uuidv4(),
+      servicio: "Diseño e instalación de equipos de audio y video",
+      imagen: vc,
+      descripcion:
+        "Video Confianza te ofrece la mejor solución para tus necesidades de audio y video",
+      route: "/audio",
+    }, */
+    
 
     {
       id: uuidv4(),

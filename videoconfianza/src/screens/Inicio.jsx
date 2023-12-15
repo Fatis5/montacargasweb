@@ -11,6 +11,7 @@ const Presentacion = loadable(() => import('./Presentacion'))
 const Derechos = loadable(() => import('./Derechos'))
 const BotonTienda = loadable(() => import('./Servicios/BotonTienda'))
 const Buttons = loadable(() => import('./Buttons'))
+import CarouselComponent from '../littleComponents/Carrusel';
 
 
 
@@ -33,7 +34,7 @@ const Inicio = () => {
         }}
       >
         <h1 className="text-gray-100 text-center font-extrabold md:text-7xl text-3xl  animate__animated animate__zoomInDown">
-          CÁMARAS DE SEGURIDAD, REDES Y ALARMAS{" "}
+          CÁMARAS DE SEGURIDAD ESTADO DE MEXICO, REDES Y ALARMAS{" "}
         </h1>
 
         <h2 className="text-white text-center font-bold md:text-2xl text-xl my-10 mx-auto animate__animated animate__zoomInUp">
@@ -61,6 +62,14 @@ const Inicio = () => {
       <div>
         <Servicios />
       </div>
+
+
+<div className="mt-9">
+  <h1
+  className='text-center text-5xl text-white font-bold  animate__animated animate__fadeInUp'
+  >Galería</h1>
+<CarouselComponent />
+</div>
 
       <div>
         <Footer />

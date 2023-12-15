@@ -33,6 +33,7 @@ const ProductosBuscados = () => {
 
       params: {
         busqueda: producto_Nombre,
+        orden: "relevancia"
     
       },
     };

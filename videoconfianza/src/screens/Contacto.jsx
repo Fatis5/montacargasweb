@@ -3,6 +3,7 @@ import Form from "../screens/Form";
 import Maps from "./Maps";
 import {  FaWhatsapp } from "react-icons/fa";
 import { HiOutlineMail } from "react-icons/hi";
+import {BsTelephoneForward} from "react-icons/bs";
 
 import { useLocation } from "react-router-dom";
 import { useEffect } from "react";
@@ -22,9 +23,9 @@ const Contacto = () => {
           <div className="mx-auto text-white mt-10 ml-4 ">
             <h1 className="mb-3 mx-auto text-5xl">Contáctanos:</h1>
             <div className="flex flex-row mr-1 mt-1 mb-1 items-stretch ">
-              <FaWhatsapp className="mt-3 text-3xl"/>
-              <a className="mt-3  text-xl md:text-3xl" href="tel:5513450478" hover="red">
-                55-13-45-04-78
+              <BsTelephoneForward className="mt-3 text-3xl"/>
+              <a className="mt-3  text-xl md:text-3xl" href="tel:5522815315" hover="red">
+                55-22-81-53-15
               </a>
             </div>
 
