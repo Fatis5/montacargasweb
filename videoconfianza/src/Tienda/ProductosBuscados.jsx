@@ -24,29 +24,22 @@ const ProductosBuscados = () => {
   const [ProductosAutorizados, setProductosAutorizados] = useState([]);
 
   const getProductos = async () => {
-    //Get productos with paramas with axios and Bearer Token from https://developers.syscom.mx/api/v1/productos.
-
     const config = {
       headers: {
         Authorization: "Bearer " + Token,
       },
-
       params: {
         busqueda: producto_Nombre,
-        orden: "relevancia"
-    
+        orden: "relevancia",
       },
     };
 
-    const response = await axios.get(
-      "https://developers.syscom.mx/api/v1/productos",
-      config
-    );
-    console.log(response.data);
-    setProductos(response.data.productos);
-    setProductosAutorizados(
-      Productos.filter((producto) => producto.nota !== "SOLICITAR DISTRIBUCIÓN")
-    );
+    try {
+      const response = await axios.get("https://developers.syscom.mx/api/v1/productos", config);
+      setProductos(response.data.productos);
+    } catch (error) {
+      console.error('Error al obtener productos:', error.message);
+    }
   };
 
   const getTipoCambio = async () => {
@@ -56,32 +49,23 @@ const ProductosBuscados = () => {
       },
     };
 
-    const response = await axios.get(
-      "https://developers.syscom.mx/api/v1/tipocambio",
-      config
-    );
-    console.log(response.data);
-    setTipoCambio(
-      //convert to float the data from the API
-      parseFloat(response.data.normal)
-      //response.data
-    );
+    try {
+      const response = await axios.get("https://developers.syscom.mx/api/v1/tipocambio", config);
+      setTipoCambio(parseFloat(response.data.normal));
+    } catch (error) {
+      console.error('Error al obtener el tipo de cambio:', error.message);
+    }
   };
 
   useEffect(() => {
-    getToken(setToken);
+    const fetchData = async () => {
+      await getToken(setToken);
+      await getTipoCambio();
+      await getProductos();
+    };
 
-  }, []);
-
-  useEffect(() => {
-    getTipoCambio();
-   
-  }, [Token]);
-
-  useEffect(() => {
-    setProductos([]);
-    getProductos();
-  }, [producto_Nombre]);
+    fetchData();
+  }, [producto_Nombre, Token]);  
 
   return (
     <div className="bg-gradient-to-r from-cyan-500 to-blue-500">
