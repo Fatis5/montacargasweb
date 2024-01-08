@@ -37,7 +37,7 @@ const CartButton = ({ id, modelo, precio, img, cantidad, titulo, marca }) => {
         setCart([...Cart, producto]);
       }
     }
-    console.log(Cart);
+    //console.log(Cart);
   };
 
  //function to remove products from cart when press - button with lodash

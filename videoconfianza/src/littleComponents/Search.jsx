@@ -1,159 +1,43 @@
-import React, { Component, useState } from "react";
-import axios from "axios";
-import { useContext } from "react";
-import { ContextCredentials } from "../ContextCredentials";
-import { useEffect } from "react";
-import getToken from "../methods/getToken";
-import Iva from "../littleComponents/Iva";
-import { Link } from "react-router-dom";
-import { useNavigate } from "react-router-dom";
-import { VscSearch } from "react-icons/vsc";
+import React, { useContext } from 'react';
+import getProductos from '../Metodos/GetProductos';
+import { ContextCredentials } from '../ContextCredentials';
+import { CiSearch } from "react-icons/ci";
+import "tailwindcss/tailwind.css";
+import { useNavigate } from 'react-router-dom';
 
 const Search = () => {
+  const { Palabra, setPalabra, setProductos } = useContext(ContextCredentials);
   const navigate = useNavigate();
-  const { Token, setToken } = useContext(ContextCredentials);
-  const [Palabra, setPalabra] = useState("");
-  const [Productos, setProductos] = useState([]);
-  const [TipoCambio, setTipoCambio] = useState("");
-  const [ProductosAutorizados, setProductosAutorizados] = useState([]);
 
-  const getProductos = async (Nombre) => {
-    const config = {
-      headers: {
-        Authorization: "Bearer " + Token,
-      },
+  const handleSearch = async () => {
+    await setProductos([]);
+    await getProductos(Palabra, setProductos, setPalabra);
+    navigate(`/ProductosBuscados/${Palabra.replace(/ /g, "+")}`);
 
-      params: {
-        busqueda: Nombre,
-       
-      },
-    };
+  };
 
-    const response = await axios.get(
-      "https://developers.syscom.mx/api/v1/productos",
-      config
-    );
-    console.log(response.data);
-    setProductos(response.data.productos);
-    setProductosAutorizados(
-      Productos.filter((producto) => producto.nota !== "SOLICITAR DISTRIBUCIÓN")
-    );
-
-    if (Palabra === "") {
-      setProductosAutorizados([]);
+  const handleKeyPress = (e) => {
+    if (e.key === 'Enter') {
+      handleSearch();
     }
   };
 
-  const getTipoCambio = async () => {
-    const config = {
-      headers: {
-        Authorization: "Bearer " + Token,
-      },
-    };
-
-    const response = await axios.get(
-      "https://developers.syscom.mx/api/v1/tipocambio",
-      config
-    );
-    console.log(response.data);
-    setTipoCambio(
-      //convert to float the data from the API
-      parseFloat(response.data.normal)
-      //response.data
-    );
-  };
-
-  useEffect(() => {
-    getToken(setToken);
-    console.log("Token: " + Token);
-  }, []);
-
-  useEffect(() => {
-    getTipoCambio();
-  }, [Token]);
-
   return (
-    <div className="mx-auto flex flex-row justify-center w-full m-5">
+    <div className="flex items-center w-full  justify-center">
       <input
-        onChangeCapture={(e) => {
-          setPalabra(e.target.value);
-          /*  getProductos(
-            Palabra.replace(/ /g, "+")
-          ); */
-        }}
-        onKeyDownCapture={(e) => {
-          if (e.key === "Enter") {
-            setPalabra(e.target.value);
-            navigate(`/ProductosBuscados/${Palabra.replace(/ /g, "+")}`);
-          }
-        }}
-        placeholder="Buscar producto en la tienda"
-        className="  md:w-1/3 w-4/5 border-4 focus:border-yellow-300 border-yellow-200  bg-white h-10 px-5 pr-16 rounded-lg text-sm focus:outline-none"
+        className='border-2  bg-white h-10 w-3/4 rounded-lg text-sm focus-yellow-500 focus:outline-none border-red-500'
         type="text"
+        placeholder="Buscar producto en la tienda"
         value={Palabra}
+        onChange={(e) => setPalabra(e.target.value)}
+        onKeyPress={handleKeyPress} // Agregar el controlador de eventos para la tecla Enter
       />
-
-{
-  Palabra !== "" && (
-<div
-className="bg-red-500 w-10 h-10 rounded-md ml-3 flex items-center justify-center "
-
->
-
-    <button
-        onClick={() => {
-          navigate(`/ProductosBuscados/${Palabra.replace(/ /g, "+")}`);
-        }}
+      <div
+        className="ml-2 p-2 cursor-pointer hover:bg-gray-200 rounded-md"
+        onClick={handleSearch}
       >
-        <VscSearch className="mx-auto text-2xl font-bold text-yellow-300" />
-      </button>
-
-</div>
-  )
-}
-
-      {/* {ProductosAutorizados.length > 0 && Palabra !== "" && (
-        <div className="overflow-y-auto h-80 md:w-1/3 w-4/5 mx-auto">
-          {ProductosAutorizados.map((producto) => (
-            <div className="px-3 bg-slate-50">
-              <Link
-                to={{
-                  pathname: `/DetalleProducto/${producto.producto_id}`,
-                }}
-                key={producto.id}
-                className="mx-auto justify-center flex flex-row bg-white p-2 rounded-lg shadow-md hover:shadow-xl transition duration-300 "
-              >
-                <div className="mx-auto flex flex-col">
-                  <img
-                    className="mx-auto w-1/3"
-                    src={producto.img_portada}
-                    alt="imagen"
-                  />
-                  <img
-                    className="mx-auto w-1/3"
-                    src={producto.marca_logo}
-                    alt="marca"
-                  />
-                </div>
-                <div className="mx-auto flex flex-col ">
-                  <p className="mx-auto text-sm font-bold">{producto.titulo}</p>
-                  <h1 className="text-center md:text-2sm  text-orange-500 font-bold mt-3 animate__animated animate__fadeInUp">
-                    MX $
-                    {(
-                      producto.precios.precio_descuento * TipoCambio +
-                      producto.precios.precio_descuento * TipoCambio * 0.36
-                    )
-                      .toFixed(2)
-                      .replace(/\d(?=(\d{3})+\.)/g, "$&,")}
-                  </h1>
-                  <Iva />
-                </div>
-              </Link>
-              <hr className="border-black w-full" />
-            </div>
-          ))}
-        </div>
-      )} */}
+        <CiSearch className=' bg-red-500 text-yellow-400 h-8 w-8 rounded-md font-bold border-3' />
+      </div>
     </div>
   );
 };

@@ -29,20 +29,40 @@ const DetalleProducto = () => {
     };
 
     const response = await axios.get(
-      `https://videoconfianzabackend-production.up.railway.app/producto/${ID}`,
+      "https://developers.syscom.mx/api/v1/productos/{id}",
       config
     );
-    //console.log(response.data);
+    console.log(response.data);
     setProducto(response.data);
   };
 
+  const getTipoCambio = async () => {
+    const config = {
+      headers: {
+        Authorization: "Bearer " + Token,
+      },
+    };
 
+    const response = await axios.get(
+      "https://developers.syscom.mx/api/v1/tipocambio",
+      config
+    );
+    console.log(response.data);
+    setTipoCambio(
+      //convert to float the data from the API
+      parseFloat(response.data.normal)
+      //response.data
+    );
+  };
 
+  useEffect(() => {
+    getToken(setToken);
+  }, []);
 
   useEffect(() => {
     getProducto();
- 
-  }, []);
+    getTipoCambio();
+  }, [Token]);
 
   return (
     <div>

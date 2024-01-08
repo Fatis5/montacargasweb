@@ -17,42 +17,59 @@ import Wifi from "./screens/Servicios/Wifi";
 import { Route, Routes } from "react-router-dom";
 import Navbar2 from "./screens/Navbar2";
 import Tienda from "./Tienda/Tienda";
-import Subcategorias from "./Tienda/Subcategorias";
 import Productos from "./Tienda/Productos";
 import { ContextCredentials } from "./ContextCredentials";
 import { useState, useEffect } from "react";
-import getToken from "./methods/GetToken";
 
 import DetalleProducto from "./Tienda/DetalleProducto";
 import Search from "./littleComponents/Search";
 import Carrito from "./Tienda/Carrito";
 import ProductosBuscados from "./Tienda/ProductosBuscados";
+import axios from "axios";
 
 
 const App = () => {
-  const [Token, setToken] = useState("");
-  const [TipoCambio, setTipoCambio] = useState("");
-  const [Cart, setCart] = useState([])
+  const [Cart, setCart] = useState([]);
+  const [Palabra, setPalabra] = useState("");
+  const [Productos, setProductos] = useState([]);
+  const [Categorias, setCategorias] = useState([])
+  const [Cambio, setCambio] = useState(0)
 
   useEffect(() => {
-    getToken(setToken);
-  }, []);
+    const getCambio = async () => {
+      const url = "https://videoconfianzabackend-production.up.railway.app/cambio";
+      const res = await axios.get(url);
+      const data = await res.data;
+      setCambio(data.normal);
+      console.log(data);
+    }
+    getCambio();
+  }
+  , [
+   
+  ]);
+
+
+  
+
 
   return (
-
-
- 
     <ContextCredentials.Provider
       value={{
-        Token,
-        setToken,
-        TipoCambio,
-        setTipoCambio,
+        setCart,
         Cart,
-        setCart
+        Palabra,
+        setPalabra,
+        Productos,
+        setProductos,
+        Categorias,
+        setCategorias,
+        Cambio,
+        setCambio
+
       }}
     >
-      <div >
+      <div>
         <Navbar2 />
         <Routes>
           <Route path="/" element={<Inicio />} />
@@ -71,19 +88,20 @@ const App = () => {
           <Route path="/Testimonios" element={<Opiniones />} />
           <Route path="/cerca" element={<Cerca />} />
           <Route path="/tienda" element={<Tienda />} />
-          <Route path="/subcategorias" element={<Subcategorias />} />
           <Route path="/search" element={<Search />} />
-          <Route path="/productos" element={<Productos />} />
-          <Route path="/carrito" element={<Carrito/>} />
-          <Route path="/ProductosBuscados/:producto_Nombre" element={<ProductosBuscados />} />
+          {/* <Route path="/productos" element={<Productos />} /> */}
+          <Route path="/carrito" element={<Carrito />} />
           <Route
+            path="/ProductosBuscados/:producto_Nombre"
+            element={<ProductosBuscados />}
+          />
+          /*           <Route
             path="/DetalleProducto/:producto_ID"
             element={<DetalleProducto />}
-          />
+          /> 
         </Routes>
       </div>
     </ContextCredentials.Provider>
-
   );
 };
 

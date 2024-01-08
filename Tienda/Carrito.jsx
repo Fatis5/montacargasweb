@@ -6,35 +6,21 @@ import { Link } from "react-router-dom";
 import _ from "lodash";
 import CartButton from "../littleComponents/CartButton";
 import Precio from "../littleComponents/Precio";
-import Loading from "../littleComponents/Loading";
 
 import axios from "axios";
 
 const Carrito = () => {
   const { Cart, setCart } = useContext(ContextCredentials);
-  const { TipoCambio } = useContext(ContextCredentials);
+  const { Token, setToken, TipoCambio, setTipoCambio } =
+    useContext(ContextCredentials);
   const [Carro2, setCarro2] = useState(
     Cart.filter((item) => item.cantidad > 0)
   );
 
-  // Load cart from Local Storage on component mount
-  useEffect(() => {
-    const savedCart = localStorage.getItem("cart");
-    if (savedCart) {
-      const parsedCart = JSON.parse(savedCart);
-      setCart(parsedCart);
-      setCarro2(parsedCart.filter((item) => item.cantidad > 0));
-    }
-  }, []);
+ 
+ 
 
-  // Save cart to Local Storage whenever it changes
-  useEffect(() => {
-    localStorage.setItem("cart", JSON.stringify(Cart));
-  }, [Cart]);
 
-  if (TipoCambio === "0") {
-    return <Loading />;
-  }
 
 
   return (
@@ -139,7 +125,7 @@ const Carrito = () => {
         </div>
       )}
 
-      {Carro2.length > 0 && TipoCambio!=="0" &&(
+      {Carro2.length > 0 && (
         <div>
           <div className="flex flex-col w-4/5 mx-auto">
             <div className="flex flex-row justify-end">
