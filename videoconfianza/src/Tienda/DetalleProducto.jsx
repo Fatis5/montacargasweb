@@ -11,7 +11,7 @@ import Precio from "../littleComponents/Precio";
 
 
 const DetalleProducto = () => {
-  const { Token, setToken, setTipoCambio, TipoCambio } =
+  const { Cambio } =
     useContext(ContextCredentials);
   const [Producto, setProducto] = useState([]);
   const { producto_ID } = useParams();
@@ -19,9 +19,7 @@ const DetalleProducto = () => {
 
   const getProducto = async () => {
     const config = {
-      headers: {
-        Authorization: "Bearer " + Token,
-      },
+
 
       params: {
         id: ID,
@@ -93,7 +91,7 @@ const DetalleProducto = () => {
               Precio Anterior:
             </p>
             <h1 className="text-center text-sm text-slate-400  m-1 animate__animated animate__fadeInUp line-through">
-              ${(Producto.precios.precio_lista * TipoCambio).toFixed(2)}
+              ${(Producto.precios.precio_lista * Cambio).toFixed(2)}
             </h1>
             <p className="text-center text-2xl text-slate-900 mt-3 m-1 animate__animated animate__fadeInUp ">
               Precio Actual:

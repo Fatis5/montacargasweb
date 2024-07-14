@@ -80,7 +80,7 @@ const Inicio = () => {
       </div>
 
       <FloatingWhatsApp
-        phoneNumber="+525513450478"
+        phoneNumber="+525522815315"
         accountName="Video Confianza"
         avatar={vc}
         statusMessage="Enviar mensaje"
