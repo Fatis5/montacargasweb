@@ -33,15 +33,15 @@ const Inicio = () => {
           // add animate__animated animate__zoomInDown
         }}
       >
-        <h1 className="text-gray-100 text-center font-extrabold md:text-7xl text-3xl  animate__animated animate__zoomInDown">
-          CÁMARAS DE SEGURIDAD ESTADO DE MEXICO, REDES Y ALARMAS{" "}
-        </h1>
+        <h1 className="text-gray-100 text-center font-extrabold md:text-7xl text-3xl animate__animated animate__zoomInDown">
+  MONTACARGAS Y SERVICIOS TEOLOYUCAN
+</h1>
 
-        <h2 className="text-white text-center font-bold md:text-2xl text-xl my-10 mx-auto animate__animated animate__zoomInUp">
-          Instalación, mantenimiento y venta de equipos de seguridad
-        </h2>
+<h2 className="text-white text-center font-bold md:text-2xl text-xl my-10 mx-auto animate__animated animate__zoomInUp">
+  Venta, renta, mantenimiento y reparación de montacargas
+</h2>
 
-       <BotonTienda />
+      {/*  <BotonTienda /> */}
 
   
         <Buttons />
