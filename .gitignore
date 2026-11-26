@@ -1,0 +1,8 @@
+node_modules
+.next
+out
+# Variables de entorno — ningún .env debe subirse al repo
+.env
+.env.*
+next-env.d.ts
+*.tsbuildinfo
